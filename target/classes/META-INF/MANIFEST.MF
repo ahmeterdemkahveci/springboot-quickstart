@@ -4,8 +4,7 @@ Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: tim_a
 Implementation-Vendor-Id: demo
 Build-Jdk: 1.8.0_152
-Implementation-URL: http://projects.spring.io/spring-boot/springboot-q
- uickstart/
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/springboot-quickstart
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 
