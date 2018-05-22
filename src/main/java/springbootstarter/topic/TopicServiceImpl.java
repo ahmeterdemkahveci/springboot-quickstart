@@ -3,44 +3,39 @@ package springbootstarter.topic;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TopicServiceImpl implements TopicService{
-
-	List<Topic> topics = new ArrayList<>(Arrays.asList(new Topic("1", "Bio", "Biology"),
-			new Topic("2", "Math", "Mathematics"), new Topic("3", "Chem", "Chemistry")));
+public class TopicServiceImpl {
+	
+	@Autowired
+	private TopicRepository topicRepository;
 
 	public List<Topic> getAllTopics() {
+		List<Topic> topics = new ArrayList<>();
+		topicRepository.findAll().forEach(topics::add);
 		return topics;
 	}
 
-	public Topic getTopicById(String id) {
-		return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+	public Topic getTopic(String id) {
+		//return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+		return topicRepository.findById(id).orElse(null);
 	}
 
 	public void addTopic(Topic topic) {
-		topics.add(topic);
+		topicRepository.save(topic);
 	}
 
 	public void update(String id, Topic topic) {
-		// TODO Auto-generated method stub
-		// topics.stream().filter(t->t.getId().equals(id)).map(top->new
-		// Topic(topic.getId(),topic.getCode(),topic.getDescription())).collect(Collectors.toCollection(ArrayList::new));
-
-		for (int i = 0; i < topics.size(); i++) {
-			if (topic.getId().equals(topics.get(i).getId())) {
-				topics.set(i, topic);
-				return;
-			}
-		}
-
+		topicRepository.save(topic);
 	}
 
 	public void deleteTopicById(String id) {
 		// TODO Auto-generated method stub
-		topics.removeIf(t -> t.getId().equals(id));
+		topicRepository.deleteById(id);
 	}
 
 }

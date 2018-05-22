@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TopicRestController {
 	
 	@Autowired
-	private TopicService topicService;
+	private TopicServiceImpl topicService;
 	
 	@RequestMapping("/topic")
 	public String getAllTopics(){
@@ -28,7 +28,7 @@ public class TopicRestController {
 	
 	@RequestMapping("/topics/{id}")
 	public Topic getTopic(@PathVariable String id){
-		return topicService.getTopicById(id);
+		return topicService.getTopic(id);
 	}
 	
 	//@PostMapping("/topics")
