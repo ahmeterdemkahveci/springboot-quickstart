@@ -22,6 +22,8 @@ public class CourseRestController {
 		return courseService.getAllCourses(id);
 	}
 	
+	
+	
 	@RequestMapping("/topics/{topicId}/courses/{id}")
 	public Course getCourse(@PathVariable String id){
 		return courseService.getCourse(id);
